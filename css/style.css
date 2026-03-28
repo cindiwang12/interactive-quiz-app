@@ -1,0 +1,470 @@
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  height:80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  background:rgba(0,0,0,0.3);
+  backdrop-filter:blur(12px);
+}
+
+.creator{
+  font-size:13px;
+  opacity:0.7;
+}
+
+/* ================= SCREEN SYSTEM ================= */
+.screen{
+  position:absolute;
+  top:80px;
+  width:100%;
+  min-height:calc(100vh - 80px);
+  padding:20px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  transform:translateX(30px);
+  pointer-events:none;
+
+  transition:all 0.3s ease;
+}
+
+.screen.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+
+/* ================= WELCOME ================= */
+.welcome-screen{
+  justify-content:center !important;
+  align-items:center !important;
+  text-align:center;
+}
+
+/* ================= GLASS CARD ================= */
+.glass{
+  width:100%;
+  max-width:420px;
+  padding:30px;
+
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter:blur(20px);
+
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+  display:flex;
+  flex-direction:column;
+  text-align:center;
+}
+
+/* ================= TYPOGRAPHY ================= */
+h2{
+  margin-bottom:10px;
+  letter-spacing:0.5px;
+}
+
+/* ================= DASHBOARD ================= */
+.dashboard{
+  width:100%;
+  max-width:1100px;
+}
+
+.title{
+  font-size:28px;
+  margin-bottom:25px;
+  text-align:center;
+}
+
+/* ================= GRID ================= */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:20px;
+}
+
+/* ================= CARD ================= */
+.card{
+  position:relative;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  cursor:pointer;
+
+  transition:0.3s ease;
+  overflow:hidden;
+}
+
+.card h3{
+  margin:10px 0 5px;
+}
+
+.card p{
+  font-size:14px;
+  opacity:0.8;
+}
+
+.icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+/* ================= BADGE ================= */
+.badge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:5px 10px;
+  font-size:12px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.2);
+}
+
+/* ================= CARD COLORS ================= */
+.card-1{ background:linear-gradient(135deg,#3b82f6,#06b6d4);}
+.card-2{ background:linear-gradient(135deg,#22c55e,#4ade80);}
+.card-3{ background:linear-gradient(135deg,#ef4444,#f97316);}
+.card-4{ background:linear-gradient(135deg,#a855f7,#6366f1);}
+.card-5{ background:linear-gradient(135deg,#f59e0b,#facc15); color:#000;}
+.card-6{ background:linear-gradient(135deg,#120ee9,#3b38f8);}
+.card-7{ background:linear-gradient(135deg,#e90eb2,#f83888);}
+
+/* ================= CARD EFFECT ================= */
+.card:hover{
+  transform:translateY(-8px) scale(1.04);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  width:150%;
+  height:150%;
+  top:-50%;
+  left:-50%;
+  background:rgba(255,255,255,0.08);
+  transform:rotate(25deg);
+  transition:0.5s;
+}
+
+.card:hover::before{
+  left:100%;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+  border:none;
+  border-radius:10px;
+
+  background:linear-gradient(135deg,#06b6d4,#22d3ee);
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:0.25s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* ================= INPUT ================= */
+input{
+  width:100%;
+  padding:12px;
+  margin-top:12px;
+
+  border:none;
+  border-radius:10px;
+}
+
+input:focus{
+  outline:none;
+  box-shadow:0 0 0 2px #22d3ee;
+}
+
+/* ================= GAME ================= */
+.game-card{
+  width:100%;
+  max-width:420px;
+  padding:25px;
+  margin-bottom:40px;
+
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ================= OPTIONS ================= */
+.option{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  margin:10px 0;
+  padding:14px;
+
+  background:#1e293b;
+  border-radius:10px;
+
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:0.2s;
+}
+
+.option:hover{
+  background:#334155;
+  transform:scale(1.04);
+}
+
+/* ================= PROGRESS ================= */
+.progress-bar{
+  height:6px;
+  margin:10px 0;
+  border-radius:10px;
+  background:#1e293b;
+}
+
+#progress-fill{
+  height:100%;
+  width:0;
+  background:#22d3ee;
+  border-radius:10px;
+  transition:width 0.3s;
+}
+
+/* ================= IMAGE ================= */
+.quiz-img{
+  width:100%;
+  max-height:200px;
+  object-fit:cover;
+  margin:10px 0;
+
+  border-radius:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.card{
+  animation:fadeUp 0.5s ease;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:768px){
+
+  .navbar{
+    flex-direction:column;
+    height:auto;
+    padding:15px;
+    text-align:center;
+  }
+
+  .screen{
+    padding:15px;
+  }
+
+  .title{
+    font-size:22px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .glass{
+    padding:20px;
+  }
+}
+
+/* ================= THEME ================= */
+:root{
+  --bg-main: radial-gradient(circle at top, #0f172a, #020617);
+  --text: #ffffff;
+  --card-bg: rgba(255,255,255,0.06);
+}
+
+body.light{
+  --bg-main: linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+  --text: #0f172a;
+  --card-bg: rgba(255,255,255,0.9);
+}
+
+body{
+  background: var(--bg-main) !important;
+  color: var(--text);
+}
+
+/* glass ikut theme */
+.glass{
+  background: var(--card-bg);
+}
+
+/* tombol toggle */
+.toggle-theme{
+  margin-left:10px;
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  background:#22d3ee;
+  font-size:16px;
+}
+
+@media (max-width:768px){
+
+  /* BODY */
+  body{
+    font-size:14px;
+  }
+
+  /* NAVBAR */
+  .navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:auto;
+    flex-direction:column;
+    gap:5px;
+    padding:12px;
+    text-align:center;
+    z-index:100;
+  }
+
+  .nav-left h1{
+    font-size:18px;
+  }
+
+  .creator{
+    font-size:11px;
+  }
+
+  /* SCREEN */
+  .screen{
+    top:90px;
+    padding:15px;
+    align-items:center;
+  }
+
+  /* GLASS */
+  .glass{
+    width:100%;
+    max-width:100%;
+    padding:18px;
+    border-radius:16px;
+  }
+
+  /* DASHBOARD */
+  .dashboard{
+    width:100%;
+  }
+
+  .title{
+    font-size:20px;
+    margin-bottom:15px;
+  }
+
+  /* GRID JADI 1 KOLOM */
+  .grid{
+    grid-template-columns:1fr;
+    gap:15px;
+  }
+
+  /* CARD */
+  .card{
+    padding:18px;
+    border-radius:14px;
+  }
+
+  .icon{
+    font-size:28px;
+  }
+
+  .card h3{
+    font-size:16px;
+  }
+
+  .card p{
+    font-size:12px;
+  }
+
+  /* GAME */
+  .game-card{
+    width:100%;
+    padding:18px;
+  }
+
+  /* OPTION */
+  .option{
+    padding:12px;
+    font-size:14px;
+  }
+
+  /* BUTTON */
+  .btn{
+    padding:12px;
+    font-size:14px;
+  }
+
+  /* INPUT */
+  input{
+    padding:10px;
+    font-size:14px;
+  }
+
+}
+
+/* SCROLL HALUS */
+body{
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* SENTUHAN MOBILE */
+button, .card, .option{
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* SAFE AREA HP (NOTCH) */
+body{
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+html, body{
+  overflow-x: hidden;
+  height: 100%;
+}

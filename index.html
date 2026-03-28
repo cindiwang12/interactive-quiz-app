@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Quest</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-left">
+    <h1>🚀 TechQuest Learning</h1>
+    <p class="creator">Miss Cindy | Guru Informatika</p>
+  </div>
+
+  <div class="nav-right">
+    <span id="userDisplay"></span>
+    <button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+  </div>
+</header>
+
+<!-- LOGIN -->
+<div id="login" class="screen active welcome-screen">
+  <div class="glass">
+    <h1>EduQuiz Interactive</h1>
+<p>Aplikasi kuis interaktif berbasis Firebase untuk pembelajaran kelas</p>
+    <h2>Welcome 👋</h2>
+    <input type="text" id="username" placeholder="Nama kamu...">
+    <button class="btn" onclick="login()">Mulai</button>
+  </div>
+</div>
+
+<!-- MENU -->
+<div id="menu" class="screen">
+    <div class="dashboard">
+      <h2 class="title">🎯 Pilih Materi Belajar</h2>
+  
+      <div class="grid">
+  
+        <div class="card card-1" onclick="startLevel(0)">
+          <div class="icon">💻</div>
+          <h3>Sistem Komputer</h3>
+          <p>Belajar hardware & software</p>
+          <span class="badge">15 Soal</span>
+        </div>
+  
+        <div class="card card-2" onclick="startLevel(1)">
+          <div class="icon">🌐</div>
+          <h3>Jaringan</h3>
+          <p>Internet & koneksi jaringan</p>
+          <span class="badge">12 Soal</span>
+        </div>
+  
+        <div class="card card-3" onclick="startLevel(2)">
+          <div class="icon">🔐</div>
+          <h3>Keamanan Digital</h3>
+          <p>Privasi & keamanan online</p>
+          <span class="badge">12 Soal</span>
+        </div>
+
+        <div class="card card-4" onclick="startLevel(3)">
+            <div class="icon">🧠</div>
+            <h3>Berpikir Komputasional</h3>
+            <p>Logika & algoritma</p>
+            <span class="badge">12 Soal</span>
+          </div>
+  
+        <div class="card card-5" onclick="showLeaderboard()">
+          <div class="icon">🏆</div>
+          <h3>Leaderboard</h3>
+          <p>Lihat skor terbaik</p>
+        </div>
+
+        <div class="card card-6" onclick="openClassMode()">
+          <div class="icon">🏫</div>
+          <h3>Mode Kelas</h3>
+          <p>Belajar bersama siswa</p>
+        </div>
+
+        <div class="card card-7" onclick="goTeacher()">
+            <div class="icon">👩‍🏫</div>
+            <h3>Mode Guru</h3>
+            <p>Tambah & kelola soal</p>
+          </div>
+  
+      </div>
+    </div>
+  </div>
+
+<!-- GAME -->
+<div id="game" class="screen">
+  <div class="game-card">
+    <span id="timer"></span>
+
+    <div class="progress-bar">
+      <div id="progress-fill"></div>
+    </div>
+
+    <h2 id="question"></h2>
+    <img id="question-img" class="quiz-img" style="display:none;">
+
+    <div id="options"></div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="result" class="screen">
+  <div class="glass">
+    <h2>🎉 Hasil</h2>
+    <p id="score"></p>
+<p id="detail"></p>
+    <button class="btn" onclick="saveScore(event)">Simpan Skor</button>
+    <button class="btn" onclick="backMenu()">Menu</button>
+    <button class="btn" onclick="exportCSV()">Export</button>
+  </div>
+</div>
+
+<!-- LEADERBOARD -->
+<div id="leaderboard" class="screen">
+  <div class="glass">
+    <h2>🏆 Leaderboard</h2>
+    <ul id="list"></ul>
+    <button class="btn" onclick="backMenu()">Kembali</button>
+  </div>
+</div>
+
+<!-- CLASS MODE -->
+<div id="classMode" class="screen">
+  <div class="glass">
+    <h2>🏫 Mode Kelas</h2>
+
+    <button class="btn" onclick="createClass()">Buat Kelas</button>
+
+    <input type="text" id="joinCode" placeholder="Masukkan kode kelas">
+    <button class="btn" onclick="joinClass()">Gabung Kelas</button>
+
+    <p id="classInfo"></p>
+
+    <button class="btn" onclick="backMenu()">Kembali</button>
+  </div>
+</div>
+
+<!-- TEACHER -->
+<div id="teacherDashboard" class="screen">
+  <div class="glass">
+    <h2>Dashboard Guru</h2>
+    <ul id="classList"></ul>
+    <button class="btn" onclick="backMenu()">Kembali</button>
+  </div>
+</div>
+
+<div id="teacher" class="screen">
+  <div class="glass">
+    <h2>👩‍🏫 Tambah Soal</h2>
+
+    <input type="text" id="qText" placeholder="Pertanyaan">
+
+    <input type="text" id="opt1" placeholder="Opsi 1">
+    <input type="text" id="opt2" placeholder="Opsi 2">
+    <input type="text" id="opt3" placeholder="Opsi 3">
+    <input type="text" id="opt4" placeholder="Opsi 4">
+
+    <input type="number" id="correct" placeholder="Jawaban benar (0-3)">
+
+    <button class="btn" onclick="addQuestion()">Tambah Soal</button>
+    <button class="btn" onclick="backMenu()">Kembali</button>
+  </div>
+</div>
+
+<script type="module" src="js/script.js"></script>
+<script type="module" src="js/class.js"></script>
+</body>
+
+</html>
