@@ -123,45 +123,28 @@ async function startLevel(lvl){
   try {
     let snapshot = await getDocs(collection(db, "questions"));
 
-    questions = [];
-
-    snapshot.forEach(doc => {
-      questions.push(doc.data());
-    });
+    questions = snapshot.docs.map(doc => doc.data());
 
     if(questions.length === 0){
-      // pakai bank lokal
-      questions = shuffleArray([...bank[lvl]])
-        .map(q => shuffleQuestion(q));
-    } else {
-      // 🔥 PENTING: shuffle Firebase juga
-      questions = shuffleArray(questions)
-        .map(q => shuffleQuestion(q));
+      throw new Error("Kosong");
     }
 
-    currentQ = 0;
-    score = 0;
-    time = 0;
-
-    switchScreen('game');
-    startTimer();
-    showQuestion();
-
   } catch (error) {
-    console.error("Gagal ambil Firebase:", error);
-
-    // fallback tetap diacak juga
+    if(location.hostname === "localhost"){
+      console.warn("Mode offline aktif");
+    }
+  
     questions = shuffleArray([...bank[lvl]])
       .map(q => shuffleQuestion(q));
-
-    currentQ = 0;
-    score = 0;
-    time = 0;
-
-    switchScreen('game');
-    startTimer();
-    showQuestion();
   }
+
+  currentQ = 0;
+  score = 0;
+  time = 0;
+
+  switchScreen('game');
+  startTimer();
+  showQuestion();
 }
 
 console.log(questions);
@@ -214,10 +197,10 @@ function answer(i){
 
   if(i === correct){
     score++;
-    soundCorrect.play();
+    soundCorrect.play().catch(() => {});
     options[i].style.background = '#22c55e';
   } else {
-    soundWrong.play();
+    soundWrong.play().catch(() => {});
     options[i].style.background = '#ef4444';
     options[correct].style.background = '#22c55e';
   }
@@ -247,7 +230,7 @@ function endGame(){
       `Benar: ${score} dari ${total} soal (${persen}%) | Waktu: ${time}s`;
   
     if(score === total){
-      soundWin.play();
+      soundWin.play().catch(() => {});
       confetti();
     }
   }
